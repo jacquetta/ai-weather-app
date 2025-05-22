@@ -7,16 +7,18 @@
     <link rel="stylesheet" href="/weather_app/src/styles/main.css">
 </head>
 <body>
-  <h1>Simple Weather App</h1>
+  <h1>Weather App</h1>
 
-  <label for="cityInput">Enter a city:</label><br>
-  <input type="text" id="cityInput" placeholder="e.g. Paris">
-  <br>
-  <button onclick="getWeather()">Get Weather</button>
-
-  <div id="result"></div>
-
-    <script src="/weather_app/src/main.js"></script>
+  // This form allows the user to input a city name and fetch the weather data
+  <form id="weatherForm">
+    <label for="city">Enter City Name:</label><br>
+    <input type="text" id="city" name="city" required>
+    <button type="submit">Get Weather</button>
+  </form>
+ 
+  <div id="weatherResult"></div>
+  
+  <script src="/weather_app/src/main.js"></script>
 </body>
 </html>
 
