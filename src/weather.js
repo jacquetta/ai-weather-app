@@ -1,0 +1,58 @@
+// src/weather.js
+
+// Fetch coordinates based on city name
+export async function getCoordinates(city) {
+  const geoURL = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`;
+  const geoResponse = await fetch(geoURL);
+
+  if (!geoResponse.ok) throw new Error("Failed to fetch location data.");
+
+  const geoData = await geoResponse.json();
+
+  if (!geoData.results || geoData.results.length === 0) {
+    throw new Error("City not found. Please check the name and try again.");
+  }
+
+  const { latitude, longitude, name } = geoData.results[0];
+  return { latitude, longitude, name };
+}
+
+// Fetch weather data based on coordinates
+export async function getWeather(latitude, longitude) {
+  const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+  const response = await fetch(weatherURL);
+
+  if (!response.ok) throw new Error("Failed to fetch weather data.");
+
+  const data = await response.json();
+
+  if (!data.current_weather) throw new Error("Current weather data is unavailable.");
+
+  return data.current_weather;
+}
+
+// Convert weather code to description
+export function getWeatherDescription(code) {
+  const weatherCodes = {
+    0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
+    45: "Fog", 48: "Depositing rime fog", 51: "Light drizzle", 53: "Moderate drizzle",
+    55: "Dense drizzle", 61: "Slight rain", 63: "Moderate rain", 65: "Heavy rain",
+    71: "Slight snow", 73: "Moderate snow", 75: "Heavy snow", 80: "Slight rain showers",
+    81: "Moderate rain showers", 82: "Violent rain showers", 95: "Thunderstorm",
+    96: "Thunderstorm with slight hail", 99: "Thunderstorm with heavy hail"
+  };
+  return weatherCodes[code] || "Unknown weather condition";
+}
+
+// Combined function to use in tests
+export async function getWeatherForCity(city) {
+  const { latitude, longitude, name } = await getCoordinates(city);
+  const { temperature, weathercode } = await getWeather(latitude, longitude);
+  const description = getWeatherDescription(weathercode);
+  return {
+    city: name,
+    temperature,
+    description
+  };
+}
+

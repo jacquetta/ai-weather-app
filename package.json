@@ -1,0 +1,30 @@
+{
+  "name": "ai-weather-app",
+  "version": "1.0.0",
+  "description": "#### Original AI Prompt: Create a beginner-friendly JavaScript function code for a weather app that will take input from the form and display the current weather. The function should be able to fetch the latitude and longitude coordinates from the API from Open-Meteo API (using the current version) using the city from the input and then convert them to list the city and weather. The code should include comments to understand what is being done and why. Code should also have error handling, be readable, and follow JavaScript best practices.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacquetta/ai-weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacquetta/ai-weather-app/issues"
+  },
+  "homepage": "https://github.com/jacquetta/ai-weather-app#readme",
+  "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  }
+}
