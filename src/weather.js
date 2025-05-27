@@ -17,19 +17,33 @@ export async function getCoordinates(city) {
   return { latitude, longitude, name };
 }
 
-// Fetch weather data based on coordinates
+// Fetch weather data based on coordinates and includes try/catch to catch issues early (e.g., if undefined or non-numbers provided) 
 export async function getWeather(latitude, longitude) {
-  const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
-  const response = await fetch(weatherURL);
+  try {
+    if (typeof latitude !== 'number' || typeof longitude !== 'number') {
+      throw new Error("Latitude and longitude must be numbers.");
+    }
 
-  if (!response.ok) throw new Error("Failed to fetch weather data.");
+    const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+    const response = await fetch(weatherURL);
 
-  const data = await response.json();
+    if (!response.ok) {
+      throw new Error(`Failed to fetch weather data: ${response.status} ${response.statusText}`);
+    }
 
-  if (!data.current_weather) throw new Error("Current weather data is unavailable.");
+    const data = await response.json();
 
-  return data.current_weather;
+    if (!data.current_weather) {
+      throw new Error("Current weather data is unavailable.");
+    }
+
+    return data.current_weather;
+  } catch (error) {
+    // Re-throw with additional context
+    throw new Error(`getWeather error: ${error.message}`);
+  }
 }
+
 
 // Convert weather code to description
 export function getWeatherDescription(code) {
