@@ -22,9 +22,9 @@ document.getElementById("weatherForm").addEventListener("submit", async function
   try {
     const result = await getWeatherForCity(cityInput);
     resultDiv.innerHTML = `
-      <strong>City:</strong> ${result.city}<br>
-      <strong>Temperature:</strong> ${result.temperature}°C<br>
-      <strong>Weather:</strong> ${result.description}
+      <p><strong>Weather in:</strong> ${result.city}<br></p>
+      <p><strong>Temperature:</strong> ${result.temperature}°C<br></p>
+      <p><strong>Condition:</strong> ${result.icon} ${result.description}</p>
     `;
   } catch (error) {
     resultDiv.innerHTML = `<span style="color: red;">Error: ${error.message}</span>`;

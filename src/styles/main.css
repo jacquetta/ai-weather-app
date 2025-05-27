@@ -1,19 +1,87 @@
 body {
-    font-family: Arial, sans-serif;
-    padding: 2rem;
-    background: #f5f5f5;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
 }
-form {
+
+h1 {
+      font-size: 2rem;
       margin-bottom: 1rem;
+      text-align: center;
+}
+
+label {
+font-weight: 600;
+}
+
+.container {
+      max-width: 500pc;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+      background:#f9f9f9;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+}
+
+input[type="text"]{
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
 }
 input, button {
       padding: 0.5rem;
       font-size: 1rem;
 }
+
+button[type="submit"]{
+      padding: 0.75rem;
+      background-color: #0077cc;
+      color:#fff;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+}
+
+button:hover{
+      background-color: #005fa3;
+}
+
 #weatherResult {
-      background-color: #fff;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      background-color: #e0f7fa;
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      max-width: 400px;
+      border-left: 5px solid #00acc1;
+      animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+      from {
+            opacity: 0;
+      }
+      to {
+            opacity: 1;
+      }
+}
+      
+@media (max-width: 600px){
+      .container {
+            margin: 1rem;
+            padding: 1rem;
+      }
+
+      input, button {
+            font-size: 1rem;
+      }
 }
