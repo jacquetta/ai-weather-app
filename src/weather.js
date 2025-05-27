@@ -55,18 +55,39 @@ export function getWeatherDescription(code) {
     81: "Moderate rain showers", 82: "Violent rain showers", 95: "Thunderstorm",
     96: "Thunderstorm with slight hail", 99: "Thunderstorm with heavy hail"
   };
-  return weatherCodes[code] || "Unknown weather condition";
+  const weatherIcons = {
+    0: '☀️',
+    1: '🌤',
+    2: '⛅️',
+    3: '☁️',
+    45: '🌫',
+    48: '🌫',
+    51: '🌦',
+    61: '🌧',
+    63: '🌧️',
+    65: '🌧️',
+    71: '🌨️',
+    75: '❄️',
+    80: '🌧️',
+    95: '⛈️',
+    99: '🌩️'
+  };
+return{
+  text: weatherCodes[code] || "Unknown weather condition",
+  icon: weatherIcons[code] || '?'
+}
 }
 
 // Combined function to use in tests
 export async function getWeatherForCity(city) {
   const { latitude, longitude, name } = await getCoordinates(city);
   const { temperature, weathercode } = await getWeather(latitude, longitude);
-  const description = getWeatherDescription(weathercode);
+  const { text, icon } = getWeatherDescription(weathercode);
   return {
     city: name,
     temperature,
-    description
+    description: text,
+    icon
   };
 }
 
