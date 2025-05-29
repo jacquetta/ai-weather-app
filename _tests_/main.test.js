@@ -45,8 +45,9 @@ describe('Weather App Tests', () => {
   });
 
   test('getWeatherDescription returns correct description', () => {
-    expect(getWeatherDescription(1)).toBe("Mainly clear");
-    expect(getWeatherDescription(99)).toBe("Thunderstorm with heavy hail");
-    expect(getWeatherDescription(999)).toBe("Unknown weather condition");
+  expect(getWeatherDescription(1)).toEqual({ text: "Mainly clear", icon: "🌤" });
+  expect(getWeatherDescription(99)).toEqual({ text: "Thunderstorm with heavy hail", icon: "🌩️" });
+  expect(getWeatherDescription(999)).toEqual({ text: "Unknown weather condition", icon: "?" });
   });
+
 });
