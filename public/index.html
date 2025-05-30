@@ -16,8 +16,12 @@
       <input type="text" id="city" name="city" required>
       <button type="submit">Get Weather</button>
     </form>
-  
-    <div id="weatherResult"></div>
+    
+    <section id="weatherContainer" aria-live="polite">
+      <div id="weatherResult" role="region" aria-label="Weather Information"></div>
+      <button id="clearBtn" aria-label="Clear Weather Result">Clear</button>
+    </section>
+
   </div>  
   <script type="module" src="../src/main.js"></script>
 </body>
