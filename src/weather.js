@@ -19,11 +19,11 @@ export async function getCoordinates(city) {
 
 // Fetch weather data based on coordinates and includes try/catch to catch issues early (e.g., if undefined or non-numbers provided) 
 export async function getWeather(latitude, longitude) {
-  try {
-    if (typeof latitude !== 'number' || typeof longitude !== 'number') {
+  // Move this check outside the try block for synchronous throwing
+  if (typeof latitude !== 'number' || typeof longitude !== 'number') {
       throw new Error("Latitude and longitude must be numbers.");
     }
-
+  try {
     const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
     const response = await fetch(weatherURL);
 
