@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1748568991203" clover="3.2.0">
-  <project timestamp="1748568991203" name="All files">
+<coverage generated="1748569540875" clover="3.2.0">
+  <project timestamp="1748569540875" name="All files">
     <metrics statements="27" coveredstatements="26" conditionals="18" coveredconditionals="16" methods="4" coveredmethods="4" elements="49" coveredelements="46" complexity="0" loc="27" ncloc="27" packages="1" files="1" classes="1"/>
     <file name="weather.js" path="/Users/jackievb/Documents/GitHub/ai-weather-app/src/weather.js">
       <metrics statements="27" coveredstatements="26" conditionals="18" coveredconditionals="16" methods="4" coveredmethods="4"/>
@@ -12,9 +12,9 @@
       <line num="13" count="2" type="stmt"/>
       <line num="16" count="2" type="stmt"/>
       <line num="17" count="2" type="stmt"/>
-      <line num="22" count="5" type="stmt"/>
       <line num="23" count="5" type="cond" truecount="4" falsecount="0"/>
       <line num="24" count="2" type="stmt"/>
+      <line num="26" count="3" type="stmt"/>
       <line num="27" count="3" type="stmt"/>
       <line num="28" count="3" type="stmt"/>
       <line num="30" count="3" type="cond" truecount="2" falsecount="0"/>
@@ -23,7 +23,7 @@
       <line num="36" count="2" type="cond" truecount="1" falsecount="1"/>
       <line num="37" count="0" type="stmt"/>
       <line num="40" count="2" type="stmt"/>
-      <line num="43" count="3" type="stmt"/>
+      <line num="43" count="1" type="stmt"/>
       <line num="50" count="5" type="stmt"/>
       <line num="58" count="5" type="stmt"/>
       <line num="75" count="5" type="stmt"/>
