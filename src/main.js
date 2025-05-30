@@ -5,67 +5,18 @@ import {
   getWeatherForCity
 } from './weather.js';
 
-// Add event listener for form submission
-document.getElementById("weatherForm").addEventListener("submit", async function (event) {
-  event.preventDefault(); // Prevent form from submitting and reloading the page
+// HTML elements you'll use
+const weatherForm = document.getElementById("weatherForm");
+const cityInput = document.getElementById("city");
+const weatherContainer = document.getElementById('weatherContainer');
+const resultDiv = document.getElementById("weatherResult"); // Use just one container for simplicity
+const clearBtn = document.getElementById("clearBtn");
 
-  const cityInput = document.getElementById("city").value.trim(); // Get city input from user
-  const resultDiv = document.getElementById("weatherResult"); // Where the weather result will be displayed
+// Hide Clear button by default
+clearBtn.style.display = 'none';
+clearBtn.setAttribute('aria-hidden', 'true'); // Better for screen readers
 
-  // Clear any previous results
-  resultDiv.innerHTML = ""; // Safe because we're clearing trusted content we created earlier
-
-  // Show a message if no city is entered
-  if (!cityInput) {
-    const errorMsg = document.createElement("p");
-    errorMsg.textContent = "Please enter a city name."; // textContent automatically escapes any potential HTML
-    errorMsg.style.color = "red";
-    resultDiv.appendChild(errorMsg);
-    return;
-  }
-
-  try {
-    // Call your function to get weather data for the entered city
-    const result = await getWeatherForCity(cityInput);
-
-    // Create a styled container to hold the result
-    const container = document.createElement("div");
-    container.style.padding = "1rem";
-    container.style.border = "1px solid #ccc";
-    container.style.borderRadius = "8px";
-    container.style.backgroundColor = "#f9f9f9";
-
-    // Create each paragraph separately and escape any dynamic content
-    const cityPara = document.createElement("p");
-    cityPara.innerHTML = `<strong>Weather in:</strong> ${escapeHTML(result.city)}`;
-    // Using escapeHTML ensures that even if result.city had malicious code, it will be safely displayed as plain text
-
-    const tempPara = document.createElement("p");
-    tempPara.innerHTML = `<strong>Temperature:</strong> ${escapeHTML(result.temperature.toString())}°C`;
-
-    const condPara = document.createElement("p");
-    condPara.innerHTML = `<strong>Condition:</strong> ${escapeHTML(result.icon)} ${escapeHTML(result.description)}`;
-
-    // Append all paragraphs to the container, then to the result div
-    container.appendChild(cityPara);
-    container.appendChild(tempPara);
-    container.appendChild(condPara);
-    resultDiv.appendChild(container);
-
-  } catch (error) {
-    // Show error message safely
-    const errorPara = document.createElement("p");
-    errorPara.style.color = "red";
-    errorPara.textContent = `Error: ${error.message}`; // textContent keeps error message safe from XSS
-    resultDiv.appendChild(errorPara);
-  }
-});
-
-/**
- * escapeHTML
- * Escapes special HTML characters in a string to prevent XSS.
- * This is essential when inserting user-influenced data using innerHTML.
- */
+// Escape user-influenced content before using innerHTML
 function escapeHTML(str) {
   return str.replace(/[&<>"']/g, function (match) {
     const escapeMap = {
@@ -78,3 +29,72 @@ function escapeHTML(str) {
     return escapeMap[match];
   });
 }
+
+// When the form is submitted
+weatherForm.addEventListener("submit", async function (event) {
+  event.preventDefault(); // Stop the page from refreshing
+
+  const cityName = cityInput.value.trim(); // Get what the user typed
+
+  // Clear any previous weather info
+  resultDiv.innerHTML = '';
+  clearBtn.style.display = 'none';
+  clearBtn.setAttribute('aria-hidden', 'true');
+
+  // Show an error if city is blank
+  if (!cityName) {
+    const errorMsg = document.createElement("p");
+    errorMsg.textContent = "Please enter a city name.";
+    errorMsg.style.color = "red";
+    resultDiv.appendChild(errorMsg);
+    return;
+  }
+
+  try {
+    // Get weather data from your API functions
+    const result = await getWeatherForCity(cityName);
+
+    // Create container for styled weather info
+    const container = document.createElement("div");
+    container.style.padding = "1rem";
+    container.style.border = "1px solid #ccc";
+    container.style.borderRadius = "8px";
+    container.style.backgroundColor = "#f9f9f9";
+
+    // Create and fill paragraphs with safe, escaped data
+    const cityPara = document.createElement("p");
+    cityPara.innerHTML = `<strong>Weather in:</strong> ${escapeHTML(result.city)}`;
+
+    const tempPara = document.createElement("p");
+    tempPara.innerHTML = `<strong>Temperature:</strong> ${escapeHTML(result.temperature.toString())}°C`;
+
+    const condPara = document.createElement("p");
+    condPara.innerHTML = `<strong>Condition:</strong> ${escapeHTML(result.icon)} ${escapeHTML(result.description)}`;
+
+    // Put all paragraphs into the container, then into the result div
+    container.appendChild(cityPara);
+    container.appendChild(tempPara);
+    container.appendChild(condPara);
+    resultDiv.appendChild(container);
+
+    // Show the Clear button now that we have content
+    clearBtn.style.display = 'inline-block';
+    clearBtn.removeAttribute('aria-hidden');
+
+  } catch (error) {
+    // If something goes wrong, show an error message
+    const errorPara = document.createElement("p");
+    errorPara.textContent = `Error: ${error.message}`;
+    errorPara.style.color = "red";
+    resultDiv.appendChild(errorPara);
+  }
+});
+
+// Clear button logic
+clearBtn.addEventListener('click', () => {
+  resultDiv.innerHTML = '';         // Clear the weather info display
+  cityInput.value = '';             // Clear the city input field in the form
+  clearBtn.style.display = 'none'; // Hide the Clear button again
+  clearBtn.setAttribute('aria-hidden', 'true'); // Accessibility: mark it as hidden
+});
+
