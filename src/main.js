@@ -11,6 +11,7 @@ const cityInput = document.getElementById("city");
 const weatherContainer = document.getElementById('weatherContainer');
 const resultDiv = document.getElementById("weatherResult"); // Use just one container for simplicity
 const clearBtn = document.getElementById("clearBtn");
+let isLoading = false; // Declare the lock for form submission
 
 // Hide Clear button by default
 clearBtn.style.display = 'none';
@@ -33,6 +34,8 @@ function escapeHTML(str) {
 // When the form is submitted
 weatherForm.addEventListener("submit", async function (event) {
   event.preventDefault(); // Stop the page from refreshing
+  if (isLoading) return // Prevent multiple submissions
+  isLoading = true; // Set loading state to true
 
   const cityName = cityInput.value.trim(); // Get what the user typed
 
@@ -47,6 +50,7 @@ weatherForm.addEventListener("submit", async function (event) {
     errorMsg.textContent = "Please enter a city name.";
     errorMsg.style.color = "red";
     resultDiv.appendChild(errorMsg);
+    isLoading = false; // Reset loading state
     return;
   }
 
@@ -90,6 +94,8 @@ weatherForm.addEventListener("submit", async function (event) {
     errorPara.textContent = `Error: ${error.message}`;
     errorPara.style.color = "red";
     resultDiv.appendChild(errorPara);
+  } finally {
+    isLoading = false; // Reset loading state after the operation
   }
 });
 
