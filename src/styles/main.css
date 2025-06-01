@@ -2,7 +2,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: #333;
+    transition: background-color 1s ease;
 }
 
 h1 {
@@ -16,7 +16,7 @@ label {
 }
 
 .container {
-      max-width: 500pc;
+      max-width: 500px;
       margin: 2rem auto;
       padding: 2rem;
       border-radius: 12px;
@@ -36,7 +36,7 @@ input[type="text"]{
       border: 1px solid #ccc;
       border-radius: 8px;
 }
-input, button {
+button {
       padding: 0.5rem;
       font-size: 1rem;
 }
@@ -85,4 +85,34 @@ button:hover{
       input, button {
             font-size: 1rem;
       }
+}
+
+/* animate the background of weather app based on weather result */
+
+.weather-clear {
+  background: linear-gradient(to top, #a1c4fd, #c2e9fb);
+}
+
+.weather-clouds {
+  background: linear-gradient(to top, #d7d2cc, #304352);
+}
+
+.weather-rain {
+  background: linear-gradient(to top, #bdc3c7, #2c3e50);
+}
+
+.weather-snow {
+  background: linear-gradient(to top, #e0eafc, #cfdef3);
+}
+
+.weather-thunderstorm {
+  background: linear-gradient(to top, #373B44, #4286f4);
+}
+
+.weather-fog {
+  background: linear-gradient(to top, #757f9a, #d7dde8);
+}
+
+.weather-default {
+  background: linear-gradient(to top, #ece9e6, #ffffff);
 }

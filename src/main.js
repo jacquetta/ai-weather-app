@@ -31,6 +31,36 @@ function escapeHTML(str) {
   });
 }
 
+function updateBackground(description) {
+  // Normalize and map weather description to mood class
+  const desc = description.toLowerCase();
+  let className = 'weather-default';
+
+  if (desc.includes('clear')) {
+    className = 'weather-clear';
+  } else if (desc.includes('cloud') || desc.includes('overcast')) {
+    className = 'weather-clouds';
+  } else if (desc.includes('rain') || desc.includes('drizzle') || desc.includes('shower')) {
+    className = 'weather-rain';
+  } else if (desc.includes('snow')) {
+    className = 'weather-snow';
+  } else if (desc.includes('thunder')) {
+    className = 'weather-thunderstorm';
+  } else if (desc.includes('fog')) {
+    className = 'weather-fog';
+  }
+
+  // Remove old weather class
+  document.body.classList.forEach(cls => {
+    if (cls.startsWith('weather-')) {
+      document.body.classList.remove(cls);
+    }
+  });
+
+  // Add new class
+  document.body.classList.add(className);
+}
+
 // When the form is submitted
 weatherForm.addEventListener("submit", async function (event) {
   event.preventDefault(); // Stop the page from refreshing
@@ -81,6 +111,9 @@ weatherForm.addEventListener("submit", async function (event) {
     container.appendChild(condPara);
     resultDiv.appendChild(container);
 
+    // change background based on weather condition
+    updateBackground(result.description);
+
     //Show the result container
     resultDiv.style.display = 'block';
 
@@ -106,5 +139,14 @@ clearBtn.addEventListener('click', () => {
   cityInput.value = '';             // Clear the city input field in the form
   clearBtn.style.display = 'none'; // Hide the Clear button again
   clearBtn.setAttribute('aria-hidden', 'true'); // Accessibility: mark it as hidden
+
+  // Remove weather classes
+  document.body.classList.forEach(cls => {
+    if (cls.startsWith('weather-')) {
+      document.body.classList.remove(cls);
+    }
+  });
+  document.body.classList.add('weather-default');
+
 });
 
