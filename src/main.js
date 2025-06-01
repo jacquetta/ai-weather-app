@@ -77,6 +77,9 @@ weatherForm.addEventListener("submit", async function (event) {
     container.appendChild(condPara);
     resultDiv.appendChild(container);
 
+    //Show the result container
+    resultDiv.style.display = 'block';
+
     // Show the Clear button now that we have content
     clearBtn.style.display = 'inline-block';
     clearBtn.removeAttribute('aria-hidden');
@@ -93,6 +96,7 @@ weatherForm.addEventListener("submit", async function (event) {
 // Clear button logic
 clearBtn.addEventListener('click', () => {
   resultDiv.innerHTML = '';         // Clear the weather info display
+  resultDiv.style.display = 'none'; // Hide the weather info display
   cityInput.value = '';             // Clear the city input field in the form
   clearBtn.style.display = 'none'; // Hide the Clear button again
   clearBtn.setAttribute('aria-hidden', 'true'); // Accessibility: mark it as hidden
