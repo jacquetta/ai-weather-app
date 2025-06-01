@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
@@ -30,30 +34,43 @@ form {
       gap: 1rem;
 }
 
-input[type="text"]{
+input {
       padding: 0.75rem;
       font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-}
-button {
-      padding: 0.5rem;
-      font-size: 1rem;
+      cursor: text;
 }
 
-button[type="submit"]{
+input, button {
+      transition: all 0.3s ease;
+}
+
+button {
       padding: 0.75rem;
-      background-color: #0077cc;
-      color:#fff;
-      border: none;
       font-size: 1rem;
+      background-color: #465153     ;
+      color: #fff;
+      border: none;
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s ease;
 }
+.full-width {
+      width: 100%;
+}
+
+#clearBtn{
+      display: block;
+      margin-top: 1rem;
+}
 
 button:hover{
-      background-color: #005fa3;
+      background-color: #085B68;
+}
+
+button:focus,
+input:focus {
+      outline: 2px solid, #085B68;
+      outline-offset: 2px;
 }
 
 #weatherResult {
@@ -63,7 +80,7 @@ button:hover{
       background-color: #e0f7fa;
       padding: 1rem;
       border-radius: 8px;
-      border-left: 5px solid #00acc1;
+      border-left: 5px solid #085B68;
       animation: fadeIn 0.5s ease-in-out;
 }
 
