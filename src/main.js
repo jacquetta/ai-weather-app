@@ -127,6 +127,7 @@ weatherForm.addEventListener("submit", async function (event) {
     errorPara.textContent = `Error: ${error.message}`;
     errorPara.style.color = "red";
     resultDiv.appendChild(errorPara);
+    resultDiv.style.display = 'block'; // Ensure the result div is visible
   } finally {
     isLoading = false; // Reset loading state after the operation
   }
