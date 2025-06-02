@@ -94,46 +94,40 @@ Condition: ⛅️ Partly cloudy
 ---
 
 ## ⚠️ Error Handling
-Invalid or misspelled cities trigger a friendly error message.
-
-Handles API failures (e.g., bad responses, no results).
-
-Defensive programming protects against missing or malformed data.
-
-Input is trimmed and validated before being used.
+- Invalid or misspelled cities trigger a friendly error message.
+- Handles API failures (e.g., bad responses, no results).
+- Defensive programming protects against missing or malformed data.
+- Input is trimmed and validated before being used.
 
 ---
 
 ## 🔗 API Information
 This app uses the Open-Meteo API for:
 
-Geocoding: Converts city names to coordinates (latitude & longitude).
-
-Weather Forecast: Fetches current temperature and weather code using coordinates.
-
-Open-Meteo API Docs: https://open-meteo.com/
+- Geocoding: Converts city names to coordinates (latitude & longitude).
+- Weather Forecast: Fetches current temperature and weather code using coordinates.
+- Open-Meteo API Docs: https://open-meteo.com/
 
 ---
 
 ## 🧪 Testing
 Unit tests are written using Jest.
 
-bash
-Copy
-Edit
+```
 npm test
+```
 Test Coverage Includes:
-Geolocation lookup with valid/invalid cities
+- Geolocation lookup with valid/invalid cities
 
-Weather data fetch with valid coordinates
+- Weather data fetch with valid coordinates
 
-Descriptive emoji/icon mapping from weather codes
+- Descriptive emoji/icon mapping from weather codes
 
-Error handling for API failures or unexpected inputs
+- Error handling for API failures or unexpected inputs
 
-Combined result function (getWeatherForCity) integration
+- Combined result function (```getWeatherForCity```) integration
 
-Test file: _tests_/main.test.js
+Test file: ```_tests_/main.test.js```
 
 ---
 
