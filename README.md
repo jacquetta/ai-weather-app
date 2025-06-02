@@ -15,6 +15,8 @@ This app allows users to:
 - 🚫 Handle input errors gracefully (e.g., invalid or misspelled city names)
 - 🔁 Clear previous results with a button
 
+Built with vanilla JavaScript, modular architecture, and styled using CSS, the app demonstrates working with asynchronous API calls and error handling in a user-friendly interface.
+
 ---
 
 ## 🛠️ Installation Instructions
