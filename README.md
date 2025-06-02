@@ -1,6 +1,6 @@
 # 🌦️ AI Weather App
 
-A simple JavaScript web application that fetches and displays real-time weather information based on a user’s city input. It uses the Open-Meteo API to retrieve current weather data, including temperature and condition, and shows friendly icons and messages.
+A simple JavaScript web application that fetches and displays real-time weather information based on a user’s city input. It uses the Open-Meteo API to retrieve current weather data, including temperature and conditions, and presents them with friendly icons and dynamic background animations.
 
 ---
 
@@ -8,10 +8,12 @@ A simple JavaScript web application that fetches and displays real-time weather 
 
 This app allows users to:
 
-* Input a city name
-* View current temperature and weather conditions
-* See weather represented by an emoji icon
-* Handle input errors gracefully (e.g., invalid or misspelled city names)
+- 🌍 Input a city name
+- 🌡 View current temperature and weather conditions
+- 🌤 See weather represented by an emoji icon
+- 🎨 Experience background animation based on weather type
+- 🚫 Handle input errors gracefully (e.g., invalid or misspelled city names)
+- 🔁 Clear previous results with a button
 
 ---
 
@@ -72,7 +74,8 @@ ai-weather-app/
 1. Open the app in your browser (usually at `http://127.0.0.1:8080`).
 2. Enter a city name.
 3. Click **Get Weather**.
-4. View the current temperature and condition with an emoji!
+4. View the current temperature, condition, emoji, and animated background!
+5. Click **Clear** to reset the app.
 
 ---
 
@@ -86,25 +89,38 @@ Condition: ⛅️ Partly cloudy
 
 ---
 
+## 🌈 Preview
+
+<img src="/assets/images/Mood_of_the_City_Weather_App_Results.png" alt="Laptop view of Mood of the City weather app" width="600">
+
+**Laptop View:** AI weather App showing current weather results, including temperature, condition, and emoji icon.
+
+<img src="/assets/images/Mood_of_the_City_Weather_App_Results_Mobile.png" alt="Mobile view of Mood of the City weather app" width="400">
+
+**Mobile View:** Responsive layout that adapts for smaller screens using a clean, readable format.
+---
+
 ## ✨ Features
 
-* 🌐 Real-time weather via Open-Meteo API
-* 🗺 City geolocation lookup
-* 🌤️ Weather emoji icons
-* 🚫 Error handling for invalid cities
-* 📦 Modular JavaScript with clean separation of concerns
-* ✅ Unit tested (Jest)
+- 🌐 Real-time weather via Open-Meteo API
+- 🗺 City geolocation lookup
+- 🌤️ Weather emoji icons
+- 🎨 Animated background gradients based on weather condition
+- 🚫 Error handling for invalid cities
+- 🔁 Clear button to reset results
+- 📦 Modular JavaScript with clean separation of concerns
+- ✅ Unit tested (Jest)
 
 ---
 
 ## 🔮 Future Improvements
 
-* Add wind speed and humidity to output
-* Integrate weather icons using external SVG/PNG sets
-* Add loading indicators and animations
-* Allow user geolocation (detect current city)
-* Support additional languages or units (e.g., Fahrenheit)
-* Cache API results for better performance
-
+- 🌬 Add wind speed and humidity to output
+- 🖼 Integrate weather icons using external SVG/PNG sets
+- ⏳ Add loading indicators and animations
+- 📍 Allow user geolocation (detect current city)
+- 🌡 Support additional units (e.g., Fahrenheit)
+- 🌍 Add support for multiple languages
+- ⚡ Cache API results for better performance
 ---
 
