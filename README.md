@@ -113,7 +113,7 @@ This app uses the Open-Meteo API for:
 ## 🧪 Testing
 Unit tests are written using Jest.
 
-```
+```bash
 npm test
 ```
 Test Coverage Includes:
