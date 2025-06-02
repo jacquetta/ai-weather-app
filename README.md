@@ -17,29 +17,6 @@ This app allows users to:
 
 ---
 
-## 📁 Project Structure
-
-```
-ai-weather-app/
-├── _tests_/             # Unit tests (Jest)
-│   └── main.test.js
-├── node_modules/        # Node dependencies
-├── public/
-│   └── index.html       # Entry HTML file
-├── src/
-│   ├── styles/
-│   │   └── main.css     # App styling
-│   ├── main.js          # DOM and user interaction logic
-│   └── weather.js       # API and weather logic
-├── babel.config.js      # Babel config for Jest
-├── jest.config.js       # Jest testing config
-├── package.json         # Project metadata and scripts
-├── package-lock.json
-└── README.md            # Project documentation
-```
-
----
-
 ## 🛠️ Installation Instructions
 
 1. **Clone the repository:**
@@ -99,7 +76,6 @@ Condition: ⛅️ Partly cloudy
 
 <img src="/assets/images/Mood_of_the_City_Weather_App_Results_Mobile.png" alt="Mobile view of Mood of the City weather app" width="400">
 
-
 ---
 
 ## ✨ Features
@@ -112,6 +88,73 @@ Condition: ⛅️ Partly cloudy
 - 🔁 Clear button to reset results
 - 📦 Modular JavaScript with clean separation of concerns
 - ✅ Unit tested (Jest)
+
+---
+
+## ⚠️ Error Handling
+Invalid or misspelled cities trigger a friendly error message.
+
+Handles API failures (e.g., bad responses, no results).
+
+Defensive programming protects against missing or malformed data.
+
+Input is trimmed and validated before being used.
+
+---
+
+## 🔗 API Information
+This app uses the Open-Meteo API for:
+
+Geocoding: Converts city names to coordinates (latitude & longitude).
+
+Weather Forecast: Fetches current temperature and weather code using coordinates.
+
+Open-Meteo API Docs: https://open-meteo.com/
+
+---
+
+## 🧪 Testing
+Unit tests are written using Jest.
+
+bash
+Copy
+Edit
+npm test
+Test Coverage Includes:
+Geolocation lookup with valid/invalid cities
+
+Weather data fetch with valid coordinates
+
+Descriptive emoji/icon mapping from weather codes
+
+Error handling for API failures or unexpected inputs
+
+Combined result function (getWeatherForCity) integration
+
+Test file: _tests_/main.test.js
+
+---
+
+## 📁 Project Structure
+
+```
+ai-weather-app/
+├── _tests_/             # Unit tests (Jest)
+│   └── main.test.js
+├── node_modules/        # Node dependencies
+├── public/
+│   └── index.html       # Entry HTML file
+├── src/
+│   ├── styles/
+│   │   └── main.css     # App styling
+│   ├── main.js          # DOM and user interaction logic
+│   └── weather.js       # API and weather logic
+├── babel.config.js      # Babel config for Jest
+├── jest.config.js       # Jest testing config
+├── package.json         # Project metadata and scripts
+├── package-lock.json
+└── README.md            # Project documentation
+```
 
 ---
 
