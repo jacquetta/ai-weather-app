@@ -91,13 +91,15 @@ Condition: ⛅️ Partly cloudy
 
 ## 🌈 Preview
 
+**Laptop View:** AI weather App showing current weather results, including temperature, condition, and emoji icon.
+
 <img src="/assets/images/Mood_of_the_City_Weather_App_Results.png" alt="Laptop view of Mood of the City weather app" width="600">
 
-**Laptop View:** AI weather App showing current weather results, including temperature, condition, and emoji icon.
+**Mobile View:** Responsive layout that adapts for smaller screens using a clean, readable format.
 
 <img src="/assets/images/Mood_of_the_City_Weather_App_Results_Mobile.png" alt="Mobile view of Mood of the City weather app" width="400">
 
-**Mobile View:** Responsive layout that adapts for smaller screens using a clean, readable format.
+
 ---
 
 ## ✨ Features
